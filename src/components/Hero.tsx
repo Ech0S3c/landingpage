@@ -2,24 +2,13 @@
 // Hero.tsx
 
 import React, { useState, useEffect } from 'react';
+import { TypeAnimation } from 'react-type-animation';
 
 const Hero = () => {
-  const [displayText, setDisplayText] = useState('');
-  const [currentIndex, setCurrentIndex] = useState(0);
-  const [isDeleting, setIsDeleting] = useState(false);
   const [glitch, setGlitch] = useState(false);
   const [particles, setParticles] = useState<Array<{id: number, x: number, y: number}>>([]);
-  const [obfuscatedText, setObfuscatedText] = useState('');
   const [terminalCommand, setTerminalCommand] = useState('');
   const [terminalIndex, setTerminalIndex] = useState(0);
-
-  const texts = [
-    'Welcome to the World of Hackers',
-    'Welcome to EchoSec',
-    'Penetration Testing',
-    'Cyber Security',
-    'Ethical Hacking'
-  ];
 
   const terminalCommands = [
     'nmap -sS -O target.com',
@@ -39,140 +28,82 @@ const Hero = () => {
     'nc -lvnp 4444'
   ];
 
-  // Inicializar o primeiro comando quando o componente montar
+  // Sequência para títulos principais
+  const titleSequence = [
+    'the World of Hackers', 8765,
+    '', 500,
+    'EchoSec', 7750,
+    '', 500,    
+  ];
+
+  // Efeito glitch aleatório
   useEffect(() => {
-    const firstCommand = terminalCommands[0];
-    let currentChar = 0;
-    
-    // Calcular velocidade baseada no tamanho do comando
-    // 2000ms (2s) dividido pelo tamanho do comando
-    const typingSpeed = Math.max(2000 / firstCommand.length, 30); // Mínimo 30ms
-    
-    const typeInitialCommand = () => {
-      if (currentChar <= firstCommand.length) {
-        setTerminalCommand(firstCommand.substring(0, currentChar));
-        currentChar++;
-        setTimeout(typeInitialCommand, typingSpeed);
+    const glitchTimer = setInterval(() => {
+      if (Math.random() < 0.1) {
+        setGlitch(true);
+        setTimeout(() => setGlitch(false), 150);
       }
-    };
-    
-    // Começar após 500ms
-    setTimeout(typeInitialCommand, 500);
+    }, 2000);
+
+    return () => clearInterval(glitchTimer);
   }, []);
 
-  // Função para gerar texto obfuscado (efeito Minecraft &k)
-  const generateObfuscatedText = (length: number) => {
-    const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*()';
-    return Array.from({ length }, () => chars[Math.floor(Math.random() * chars.length)]).join('');
-  };
-
-  // Efeito para atualizar texto obfuscado continuamente
+  // Gerador de partículas
   useEffect(() => {
-    const obfuscateTimer = setInterval(() => {
-      const currentWord = texts[currentIndex];
-      const remainingLength = currentWord.length - displayText.length;
-      if (remainingLength > 0) {
-        setObfuscatedText(generateObfuscatedText(remainingLength));
-      } else {
-        setObfuscatedText('');
+    const particleTimer = setInterval(() => {
+      if (Math.random() < 0.3) {
+        const newParticle = {
+          id: Date.now(),
+          x: Math.random() * (typeof window !== 'undefined' ? window.innerWidth : 1000),
+          y: Math.random() * (typeof window !== 'undefined' ? window.innerHeight : 800)
+        };
+        setParticles(prev => [...prev, newParticle]);
+        
+        // Remove partícula após 3 segundos
+        setTimeout(() => {
+          setParticles(prev => prev.filter(p => p.id !== newParticle.id));
+        }, 3000);
       }
-    }, 100);
+    }, 1000);
 
-    return () => clearInterval(obfuscateTimer);
-  }, [displayText, currentIndex, texts]);
+    return () => clearInterval(particleTimer);
+  }, []);
 
-  // Efeito para atualizar comandos do terminal
+  // Sistema de terminal simplificado
   useEffect(() => {
-    const terminalTimer = setInterval(() => {
-      setTerminalIndex((prev) => (prev + 1) % terminalCommands.length);
-    }, 2500); // Troca a cada 2.5 segundos
-
-    return () => clearInterval(terminalTimer);
-  }, [terminalCommands.length]);
-
-  // Efeito para digitar comando atual
-  useEffect(() => {
-    // Pular o primeiro comando (já foi digitado na inicialização)
-    if (terminalIndex === 0) return;
-    
-    const currentCommand = terminalCommands[terminalIndex];
-    let currentChar = 0;
-    let timeouts: NodeJS.Timeout[] = [];
-    
-    // Calcular velocidade baseada no tamanho do comando
-    // 2000ms (2s) dividido pelo tamanho do comando para terminar em 2s
-    const typingSpeed = Math.max(2000 / currentCommand.length, 30); // Mínimo 30ms por caractere
-    
-    // Limpar comando atual
-    setTerminalCommand('');
+    let currentCommandIndex = 0;
     
     const typeCommand = () => {
-      if (currentChar <= currentCommand.length) {
-        setTerminalCommand(currentCommand.substring(0, currentChar));
-        currentChar++;
-        const timeout = setTimeout(typeCommand, typingSpeed);
-        timeouts.push(timeout);
-      }
+      const command = terminalCommands[currentCommandIndex];
+      let charIndex = 0;
+      
+      // Limpar comando
+      setTerminalCommand('');
+      
+      // Digitar comando
+      const typingInterval = setInterval(() => {
+        if (charIndex <= command.length) {
+          setTerminalCommand(command.substring(0, charIndex));
+          charIndex++;
+        } else {
+          clearInterval(typingInterval);
+        }
+      }, Math.max(2000 / command.length, 30));
     };
     
-    // Começar a digitar após um pequeno delay
-    const initialTimeout = setTimeout(typeCommand, 100);
-    timeouts.push(initialTimeout);
+    // Primeiro comando
+    setTimeout(typeCommand, 1000);
     
+    // Comandos subsequentes
+    const commandTimer = setInterval(() => {
+      currentCommandIndex = (currentCommandIndex + 1) % terminalCommands.length;
+      typeCommand();
+    }, 2500);
+
     return () => {
-      // Limpar todos os timeouts
-      timeouts.forEach(timeout => clearTimeout(timeout));
+      clearInterval(commandTimer);
     };
-    
-  }, [terminalIndex]);
-
-  useEffect(() => {
-    const typeSpeed = isDeleting ? 30 : 80; // Aumentado a velocidade (era 50:150)
-    const currentWord = texts[currentIndex];
-    
-    const timer = setTimeout(() => {
-      if (!isDeleting) {
-        // Digitando
-        if (displayText.length < currentWord.length) {
-          setDisplayText(currentWord.substring(0, displayText.length + 1));
-          
-          // Efeito glitch aleatório
-          if (Math.random() < 0.15) { // Aumentada a chance de glitch
-            setGlitch(true);
-            setTimeout(() => setGlitch(false), 100);
-          }
-          
-          // Adicionar partículas
-          if (Math.random() < 0.4) { // Mais partículas
-            const newParticle = {
-              id: Date.now(),
-              x: Math.random() * (typeof window !== 'undefined' ? window.innerWidth : 1000),
-              y: Math.random() * (typeof window !== 'undefined' ? window.innerHeight : 800)
-            };
-            setParticles(prev => [...prev, newParticle]);
-            
-            // Remove partícula após 2 segundos
-            setTimeout(() => {
-              setParticles(prev => prev.filter(p => p.id !== newParticle.id));
-            }, 2000);
-          }
-        } else {
-          // Pausar antes de começar a apagar
-          setTimeout(() => setIsDeleting(true), 1500); // Reduzido de 2000 para 1500
-        }
-      } else {
-        // Apagando
-        if (displayText.length > 0) {
-          setDisplayText(currentWord.substring(0, displayText.length - 1));
-        } else {
-          setIsDeleting(false);
-          setCurrentIndex((prev) => (prev + 1) % texts.length);
-        }
-      }
-    }, typeSpeed);
-
-    return () => clearTimeout(timer);
-  }, [displayText, currentIndex, isDeleting, texts]);
+  }, []);
 
   return (
     <section className="bg-black min-h-screen flex items-center justify-center pt-10 relative overflow-hidden">
@@ -202,8 +133,9 @@ const Hero = () => {
 
       <div className="container mx-auto px-6 text-center relative z-10">
         <div className="relative">
+          {/* Título principal com TypeAnimation */}
           <h1 
-            className={`text-5xl md:text-6xl font-bold text-white mb-4 transition-all duration-100 ${
+            className={`text-5xl md:text-6xl font-bold text-white mb-4 transition-all duration-100 min-h-[4rem] flex items-center justify-center ${
               glitch ? 'transform translate-x-1 text-purple-500' : ''
             }`}
             style={{
@@ -211,44 +143,86 @@ const Hero = () => {
                 ? '2px 0 #7c3aed, -2px 0 #ec4899, 0 0 20px #7c3aed' 
                 : '0 0 20px rgba(124, 58, 237, 0.5)'
             }}
-          >
-            {displayText}
-            <span className="animate-pulse text-purple-500">|</span>
+          > 
+            <span className="mr-4">Welcome to </span>
+            <TypeAnimation
+              sequence={titleSequence}
+              wrapper="span"
+              speed={50}
+              repeat={Infinity}
+              cursor={true}
+              style={{ display: 'inline-block' }}
+            />
           </h1>
           
-          {/* Efeito de scan line */}
           <div 
             className="absolute inset-0 bg-gradient-to-r from-transparent via-purple-500 to-transparent opacity-20 animate-pulse"
             style={{
               background: 'linear-gradient(90deg, transparent, #7c3aed, transparent)',
               height: '2px',
-              animation: 'scan 3s infinite'
+              animation: 'scan 2s infinite'
             }}
           />
         </div>
         
-        <h2 className="text-lg md:text-xl text-gray-400 font-mono mt-8 bg-gray-900 rounded-lg p-4 border border-gray-700 max-w-4xl mx-auto text-left">
-          <div className="flex items-center mb-2">
-            <div className="flex space-x-2 mr-4">
-              <div className="w-3 h-3 bg-red-500 rounded-full"></div>
-              <div className="w-3 h-3 bg-yellow-500 rounded-full"></div>
-              <div className="w-3 h-3 bg-green-500 rounded-full"></div>
+        <div className="text-lg md:text-xl font-mono mt-8 max-w-4xl mx-auto text-left">
+          {/* Terminal com glassmorphism */}
+          <div 
+            className="relative p-6 rounded-2xl backdrop-blur-xl border border-white/10 shadow-2xl"
+            style={{
+              background: 'linear-gradient(135deg, rgba(124, 58, 237, 0.1) 0%, rgba(139, 69, 19, 0.05) 50%, rgba(0, 0, 0, 0.3) 100%)',
+              boxShadow: '0 20px 40px rgba(124, 58, 237, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.1)'
+            }}
+          >
+            {/* Efeito de brilho sutil no topo */}
+            <div 
+              className="absolute top-0 left-0 right-0 h-px opacity-60"
+              style={{
+                background: 'linear-gradient(90deg, transparent, rgba(124, 58, 237, 0.8), transparent)'
+              }}
+            />
+            
+            {/* Header do terminal */}
+            <div className="flex items-center mb-4">
+              <div className="flex space-x-2 mr-4">
+                <div className="w-3 h-3 bg-red-500/80 rounded-full backdrop-blur-sm shadow-lg"></div>
+                <div className="w-3 h-3 bg-yellow-500/80 rounded-full backdrop-blur-sm shadow-lg"></div>
+                <div className="w-3 h-3 bg-green-500/80 rounded-full backdrop-blur-sm shadow-lg"></div>
+              </div>
+              <span className="text-gray-400/80 text-sm font-medium">Terminal - zsh</span>
             </div>
-            <span className="text-gray-500 text-sm">Terminal - zsh</span>
+            
+            {/* Linha do prompt */}
+            <div className="text-sm mb-1 opacity-90">
+              <span className="text-green-400/90">┌──(</span>
+              <span className="text-blue-400/90 font-semibold">kali㉿echosec</span>
+              <span className="text-green-400/90">)-[</span>
+              <span className="text-white/90">~/pentest</span>
+              <span className="text-green-400/90">]</span>
+            </div>
+            
+            {/* Linha do comando */}
+            <div className="text-sm flex items-center">
+              <span className="text-green-400/90 mr-1">└─$ </span>
+              <span className="text-white/95 font-mono tracking-wide">{terminalCommand}</span>
+              <span 
+                className="animate-pulse text-green-400/90 ml-1 font-bold"
+                style={{
+                  textShadow: '0 0 8px rgba(74, 222, 128, 0.5)'
+                }}
+              >█</span>
+            </div>
+            
+            {/* Efeito de scan line sutil no terminal */}
+            <div 
+              className="absolute inset-0 pointer-events-none rounded-2xl opacity-20"
+              style={{
+                background: 'linear-gradient(0deg, transparent 48%, rgba(124, 58, 237, 0.1) 49%, rgba(124, 58, 237, 0.2) 50%, rgba(124, 58, 237, 0.1) 51%, transparent 52%)',
+                animation: 'terminalScan 4s infinite ease-in-out'
+              }}
+            />
           </div>
-          <div className="text-sm">
-            <span className="text-green-400">┌──(</span>
-            <span className="text-blue-400">kali㉿echosec</span>
-            <span className="text-green-400">)-[</span>
-            <span className="text-white">~/pentest</span>
-            <span className="text-green-400">]</span>
-          </div>
-          <div className="text-sm">
-            <span className="text-green-400">└─$ </span>
-            <span className="text-white">{terminalCommand}</span>
-            <span className="animate-pulse text-green-400">█</span>
-          </div>
-        </h2>
+        </div>
       </div>
 
       <style jsx>{`
@@ -256,6 +230,11 @@ const Hero = () => {
           0% { transform: translateY(-100px); opacity: 0; }
           50% { opacity: 1; }
           100% { transform: translateY(100px); opacity: 0; }
+        }
+        
+        @keyframes terminalScan {
+          0% { transform: translateY(-100%); }
+          100% { transform: translateY(100%); }
         }
       `}</style>
     </section>

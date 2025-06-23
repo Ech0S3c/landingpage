@@ -1,4 +1,5 @@
 import React from 'react';
+import Card from './Card';
 
 const BenefitsSection = () => {
   const benefits = [
@@ -36,21 +37,23 @@ const BenefitsSection = () => {
         
         <div className="grid md:grid-cols-3 gap-8 mb-8">
           {benefits.slice(0, 3).map((benefit, index) => (
-            <div key={index} className="bg-gray-900 border border-purple-500 rounded-lg p-6 hover:border-purple-400 transition-colors">
-              <div className="text-3xl mb-4">{benefit.icon}</div>
-              <h3 className="text-xl font-bold text-white mb-4">{benefit.title}</h3>
-              <p className="text-gray-400 text-sm leading-relaxed">{benefit.description}</p>
-            </div>
+            <Card
+              key={index}
+              icon={benefit.icon}
+              title={benefit.title}
+              text={benefit.description}
+            />
           ))}
         </div>
         
         <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
           {benefits.slice(3).map((benefit, index) => (
-            <div key={index + 3} className="bg-gray-900 border border-purple-500 rounded-lg p-6 hover:border-purple-400 transition-colors">
-              <div className="text-3xl mb-4">{benefit.icon}</div>
-              <h3 className="text-xl font-bold text-white mb-4">{benefit.title}</h3>
-              <p className="text-gray-400 text-sm leading-relaxed">{benefit.description}</p>
-            </div>
+            <Card
+              key={index + 3}
+              icon={benefit.icon}
+              title={benefit.title}
+              text={benefit.description}
+            />
           ))}
         </div>
       </div>
