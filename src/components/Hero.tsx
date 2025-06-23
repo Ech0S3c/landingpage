@@ -111,7 +111,7 @@ const Hero = () => {
       {particles.map(particle => (
         <div
           key={particle.id}
-          className="absolute w-1 h-1 bg-purple-500 rounded-full animate-pulse"
+          className="absolute w-1 h-1 bg-purple-600 rounded-full animate-pulse"
           style={{
             left: particle.x,
             top: particle.y,
@@ -122,7 +122,7 @@ const Hero = () => {
 
       {/* Efeito de linha de código de fundo */}
       <div className="absolute inset-0 opacity-10">
-        <div className="text-purple-500 text-xs font-mono leading-4 p-4">
+        <div className="text-purple-400 text-xs font-mono leading-4 p-4">
           {Array.from({ length: 50 }, (_, i) => (
             <div key={i} className="mb-1">
               {Math.random() > 0.5 ? '01010101' : '10101010'} {Math.random() > 0.5 ? '11110000' : '00001111'}
@@ -136,7 +136,7 @@ const Hero = () => {
           {/* Título principal com TypeAnimation */}
           <h1 
             className={`text-5xl md:text-6xl font-bold text-white mb-4 transition-all duration-100 min-h-[4rem] flex items-center justify-center ${
-              glitch ? 'transform translate-x-1 text-purple-500' : ''
+              glitch ? 'transform translate-x-1 text-purple-400' : ''
             }`}
             style={{
               textShadow: glitch 

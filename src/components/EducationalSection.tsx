@@ -3,15 +3,15 @@ import React from 'react';
 const EducationalSection = () => {
   return (
     <section className="bg-black py-20">
-      <div className="container mx-auto px-6">
+      <div className="container mx-auto px-30">
         <h2 className="text-4xl font-bold text-white text-center mb-16">Educacional</h2>
         
-        <div className="grid md:grid-cols-2 gap-12 items-center mb-16">
-          <div className="bg-gradient-to-br from-purple-900/30 to-blue-900/30 rounded-lg p-2">
+        <div className="grid md:grid-cols-2 gap-5 items-center mb-16">
+          <div className="bg-purple-600 p-0.5">
             <img 
               src="https://images.unsplash.com/photo-1605810230434-7631ac76ec81?w=600&h=400&fit=crop"
               alt="Nosso Jeito de Ensinar"
-              className="w-full h-64 object-cover rounded-lg"
+              className="w-full h-64 object-cover"
             />
           </div>
           <div>
@@ -28,15 +28,15 @@ const EducationalSection = () => {
             <p className="text-gray-400 mb-6 leading-relaxed">
               Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut ut enim eu dolor tempus cursus. Donec tincidunt faucibus lorem, et molestie tortor imperdiet in. Ut risus lorem, scelerisque sit amet elementum ac.
             </p>
-            <button className="bg-purple-600 hover:bg-purple-700 text-white px-6 py-3 rounded-lg font-semibold transition-colors">
-              Ver Nossos Membros
+            <button className="bg-purple-600 hover:bg-purple-700 text-white px-6 py-3 font-bold transition-colors">
+              Veja Nossos Materiais
             </button>
           </div>
-          <div className="order-1 md:order-2 bg-gradient-to-br from-purple-900/30 to-blue-900/30 rounded-lg p-2">
+          <div className="order-1 md:order-2 bg-purple-600 p-0.5">
             <img 
               src="https://images.unsplash.com/photo-1461749280684-dccba630e2f6?w=600&h=400&fit=crop"
               alt="Nossas Aulas e Eventos"
-              className="w-full h-64 object-cover rounded-lg"
+              className="w-full h-64 object-cover"
             />
           </div>
         </div>
