@@ -1,12 +1,12 @@
 import React from 'react';
-import Header from '../components/Header';
-import Hero from '../components/Hero';
-import AboutSection from '../components/AboutSection';
-import EducationalSection from '../components/EducationalSection';
-import BenefitsSection from '../components/BenefitsSection';
-import TestimonialsSection from '../components/TestimonialsSection';
-import ContactSection from '../components/ContactSection';
-import Footer from '../components/Footer';
+import Header from '../components/general/Header';
+import Hero from '../components/landing-page/Hero';
+import AboutSection from '../components/landing-page/AboutSection';
+import EducationalSection from '../components/landing-page/EducationalSection';
+import BenefitsSection from '../components/landing-page/BenefitsSection';
+import TestimonialsSection from '../components/landing-page/TestimonialsSection';
+import ContactSection from '../components/landing-page/ContactSection';
+import Footer from '../components/general/Footer';
 
 export default function HomePage() {
   return (
