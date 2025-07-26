@@ -1,14 +1,14 @@
 import React from 'react';
 import Header from '../components/general/Header';
-import Hero from '../components/landing-page/Hero';
-import AboutSection from '../components/landing-page/AboutSection';
-import EducationalSection from '../components/landing-page/EducationalSection';
-import BenefitsSection from '../components/landing-page/BenefitsSection';
-import TestimonialsSection from '../components/landing-page/TestimonialsSection';
-import ContactSection from '../components/landing-page/ContactSection';
+import Hero from '../components/home/Hero';
+import AboutSection from '../components/home/AboutSection';
+import EducationalSection from '../components/home/EducationalSection';
+import BenefitsSection from '../components/home/BenefitsSection';
+import TestimonialsSection from '../components/home/TestimonialsSection';
+import ContactSection from '../components/home/ContactSection';
 import Footer from '../components/general/Footer';
 
-export default function HomePage() {
+const Landing = () => {
   return (
     <div className="min-h-screen bg-black">
       <Header />
@@ -22,3 +22,5 @@ export default function HomePage() {
     </div>
   );
 }
+
+export default Landing;
