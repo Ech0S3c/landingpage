@@ -11,11 +11,11 @@ const Header = () => {
           </div>
           
           <nav className="hidden md:flex items-center space-x-8">
-            <a href="#" className="text-white hover:text-purple-400 transition-colors">Home</a>
-            <a href="#" className="text-white hover:text-purple-400 transition-colors">Educacional</a>
-            <a href="#" className="text-white hover:text-purple-400 transition-colors">Quem Somos</a>
-            <a href="#" className="text-white hover:text-purple-400 transition-colors">Contato</a>
-            <a href="#" className="text-white hover:text-purple-400 transition-colors">Materiais</a>
+            <a href="/" className="text-white hover:text-purple-400 transition-colors">Home</a>
+            <a href="/Educacional" className="text-white hover:text-purple-400 transition-colors">Educacional</a>
+            <a href="/Quem Somos" className="text-white hover:text-purple-400 transition-colors">Quem Somos</a>
+            <a href="/Contato" className="text-white hover:text-purple-400 transition-colors">Contato</a>
+            <a href="/Materiais" className="text-white hover:text-purple-400 transition-colors">Materiais</a>
           </nav>
         </div>
       </div>
