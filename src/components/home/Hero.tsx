@@ -102,7 +102,7 @@ const Hero = () => {
     return () => {
       clearInterval(commandTimer);
     };
-  }, []);
+  }, );
 
   return (
     <section className="bg-black min-h-screen flex items-center justify-center pt-10 relative overflow-hidden">
