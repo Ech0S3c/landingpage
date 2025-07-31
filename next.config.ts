@@ -6,7 +6,8 @@ const nextConfig: NextConfig = {
     domains: [
       'img.icons8.com',
       'placehold.co',
-      'via.placeholder.com'
+      'via.placeholder.com',
+      'images.unsplash.com'
     ],
     remotePatterns: [
       {

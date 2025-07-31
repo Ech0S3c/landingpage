@@ -1,7 +1,9 @@
 // components/sections/QuemSomos.tsx
+import Image from 'next/image';
+
 export default function WhoWeAre() {
   return (
-    <section className="bg-primary text-light px-6 py-section font-body">
+    <section className="bg-primary text-light px-6 py-section font-body mt-0">
       <div className="max-w-6xl mx-auto flex flex-col lg:flex-row items-center gap-12">
         {/* Texto */}
         <div className="flex-1 text-center lg:text-left">
@@ -14,9 +16,11 @@ export default function WhoWeAre() {
         {/* Imagem e descrição */}
         <div className="flex-1 flex flex-col items-center lg:items-start">
           <div className="border-2 border-secondary rounded-xl overflow-hidden">
-            <img
+            <Image
               src="/assets/team.jpg"
               alt="Nosso Time"
+              width={600}
+              height={400}
               className="w-full max-w-md object-cover"
             />
           </div>

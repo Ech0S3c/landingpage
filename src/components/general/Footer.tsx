@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import React from 'react';
+import Image from 'next/image';
 
 const Footer = () => {
   return (
@@ -8,7 +9,7 @@ const Footer = () => {
         <div className="grid md:grid-cols-3 gap-8">
           <div>
             <Link href="/" className="flex items-center space-x-2 mb-4">
-              <img src="/logo.svg" alt="Logo" className="w-8 h-8" />
+              <Image src="/logo.svg" alt="Logo" width={32} height={32} className="w-8 h-8" />
               <span className="text-light font-semibold text-xl">EchoSec</span>
             </Link>
           </div>
