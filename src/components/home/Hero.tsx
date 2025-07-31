@@ -8,7 +8,6 @@ const Hero = () => {
   const [glitch, setGlitch] = useState(false);
   const [particles, setParticles] = useState<Array<{id: number, x: number, y: number}>>([]);
   const [terminalCommand, setTerminalCommand] = useState('');
-  const [terminalIndex, setTerminalIndex] = useState(0);
 
   const terminalCommands = [
     'nmap -sS -O target.com',

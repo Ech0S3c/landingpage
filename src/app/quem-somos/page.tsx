@@ -1,13 +1,15 @@
 import React from 'react';
 import Header from '@/components/general/Header';
-import WhoWeAre from '@/components/quem-somos/WhoWeAre';
+import TeamSection from '@/components/quem-somos/TeamSection';
+import OrganizationalSection from '@/components/quem-somos/OrganizationalSection';
 import Footer from '@/components/general/Footer';
 
 const WhoWeAreSection = () => {
   return (
     <div>
       <Header />
-      <WhoWeAre />
+      <TeamSection />
+      <OrganizationalSection />
       <Footer />
     </div>
   );
