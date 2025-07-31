@@ -1,4 +1,5 @@
 import React from 'react';
+import Image from 'next/image';
 
 const EducationalSection = () => {
   return (
@@ -8,9 +9,11 @@ const EducationalSection = () => {
         
         <div className="grid md:grid-cols-2 gap-5 items-center mb-16">
           <div className="bg-purple-600 p-0.5">
-            <img 
+            <Image
               src="https://images.unsplash.com/photo-1605810230434-7631ac76ec81?w=600&h=400&fit=crop"
               alt="Nosso Jeito de Ensinar"
+              width={600}
+              height={400}
               className="w-full h-64 object-cover"
             />
           </div>
@@ -33,9 +36,11 @@ const EducationalSection = () => {
             </button>
           </div>
           <div className="order-1 md:order-2 bg-purple-600 p-0.5">
-            <img 
+            <Image
               src="https://images.unsplash.com/photo-1461749280684-dccba630e2f6?w=600&h=400&fit=crop"
               alt="Nossas Aulas e Eventos"
+              width={600}
+              height={400}
               className="w-full h-64 object-cover"
             />
           </div>

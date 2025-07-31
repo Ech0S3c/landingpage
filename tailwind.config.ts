@@ -1,28 +1,38 @@
-import type { Config } from 'tailwindcss'
+import type { Config } from 'tailwindcss';
 
 const config: Config = {
   content: [
-    './src/pages/**/*.{js,ts,jsx,tsx,mdx}',
-    './src/components/**/*.{js,ts,jsx,tsx,mdx}',
-    './src/app/**/*.{js,ts,jsx,tsx,mdx}',
+    './app/**/*.{js,ts,jsx,tsx}',
+    './components/**/*.{js,ts,jsx,tsx}',
   ],
   theme: {
     extend: {
       colors: {
-        'custom': {
-          'purple': '#7327FF',
-        },
-        // Ou podemos sobrescrever o purple padrão
-        'purple': {
-          '400': '#7327FF',
-          '500': '#7327FF', 
-          '600': '#7327FF',
-          '700': '#6520E6',
-          '900': '#4A1BA8',
+        primary: '#0B1C3F',         // Azul escuro institucional
+        secondary: '#FFD700',       // Dourado suave
+        light: '#FFFFFF',           // Branco
+        muted: '#F5F5F5',           // Cinza muito claro
+        dark: '#1A1A1A',            // Quase preto
+        border: '#E5E7EB',          // Cinza claro para contornos
+        card: {
+          bg: '#2A2A2A',            // Fundo escuro do card
+          border: '#8B5CF6',        // Roxo para a borda
+          glow: 'rgba(139, 92, 246, 0.3)', // Brilho roxo
         }
+      },
+      fontFamily: {
+        heading: ['Cinzel', 'serif'],
+        body: ['Poppins', 'sans-serif'],
+      },
+      spacing: {
+        'section': '4rem', // Para seções principais
+      },
+      dropShadow: {
+        'card-glow': '0 0 20px rgba(139, 92, 246, 0.4)',
       },
     },
   },
-  plugins: [],
-}
-export default config
+  plugins: [require('@tailwindcss/typography')],
+};
+
+export default config;
