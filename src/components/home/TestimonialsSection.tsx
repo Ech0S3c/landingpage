@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState, useEffect } from 'react';
+import Image from 'next/image';
 
 const TestimonialsSection = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
@@ -111,10 +112,12 @@ const TestimonialsSection = () => {
                       >
                       <div className="pt-16 sm:pt-18 md:pt-20 lg:pt-24 pb-6 md:pb-8 px-3 sm:px-4 md:px-6 text-center h-full flex flex-col justify-between">
                         <div>
-                          <img 
+                          <Image
                             src={testimonial.image}
                             alt="Testimonial"
-                            className="w-20 h-20 sm:w-24 sm:h-24 md:w-28 md:h-28 lg:w-32 lg:h-32 xl:w-36 xl:h-36 rounded-full border-4 border-purple-400 mx-auto mb-3 sm:mb-4 hover:scale-[1.02] transition-transform duration-300 ease-in-out shadow-xl"
+                            width={150}
+                            height={150}
+                            className="w-20 h-20 sm:w-24 sm:h-24 md:w-28 md:h-28 lg:w-32 lg:h-32 xl:w-36 xl:h-36 rounded-full border-4 border-purple-400 mx-auto mb-3 sm:mb-4 hover:scale-[1.02] transition-transform duration-300 ease-in-out shadow-xl object-cover"
                           />
                         </div>
                         <p className="text-gray-200 text-xs sm:text-sm leading-relaxed flex-1 flex items-center justify-center px-1 sm:px-2">{testimonial.text}</p>

@@ -8,7 +8,6 @@ const Hero = () => {
   const [glitch, setGlitch] = useState(false);
   const [particles, setParticles] = useState<Array<{id: number, x: number, y: number}>>([]);
   const [terminalCommand, setTerminalCommand] = useState('');
-  const [terminalIndex, setTerminalIndex] = useState(0);
 
   const terminalCommands = [
     'nmap -sS -O target.com',
@@ -103,7 +102,7 @@ const Hero = () => {
     return () => {
       clearInterval(commandTimer);
     };
-  }, []);
+  }, );
 
   return (
     <section className="bg-black min-h-screen flex items-center justify-center pt-10 relative overflow-hidden">

@@ -8,7 +8,7 @@ import TestimonialsSection from '../components/landing-page/TestimonialsSection'
 import ContactSection from '../components/landing-page/ContactSection';
 import Footer from '../components/general/Footer';
 
-export default function HomePage() {
+const Landing = () => {
   return (
     <div className="min-h-screen bg-black">
       <Header />
@@ -22,3 +22,5 @@ export default function HomePage() {
     </div>
   );
 }
+
+export default Landing;
