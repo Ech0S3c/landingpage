@@ -136,7 +136,7 @@ const OrganizationalSection = () => {
                           />
                         </div>
                         <p className="text-lg font-bold text-white ">{organizational.team}</p>
-                        <p className="text-gray-200 text-xs sm:text-sm leading-relaxed flex-1 justify-center px-1 sm:px-2 mt-0 mb-0 -mt-2">{organizational.text}</p>
+                        <p className="text-gray-200 text-xs sm:text-sm leading-relaxed flex-1 justify-center px-1 sm:px-2 mt-0 mb-0">{organizational.text}</p>
                       </div>
                     </div>
                   </div>
