@@ -41,7 +41,7 @@ const ResearchSection: React.FC = () => {
   return (
     <section className="bg-black py-12 md:py-20 relative mt-0 p-0">
 
-      <div className="container mx-auto px-32 md:px-48 mt-0 p-0">
+      <div className="container mx-auto px-32 md:px-2 mt-0 p-0">
         <h2 className="text-2xl md:text-4xl font-bold text-white text-center mb-8 md:mb-16"  style={{ fontSize: "45px"}}>Pesquisa & Inovação</h2>
 
         {/* Container */}
