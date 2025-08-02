@@ -16,7 +16,6 @@ const Header = () => {
             <a href="/" className="text-light hover:text-secondary transition-colors">Home</a>
             <a href="/educacional" className="text-light hover:text-secondary transition-colors">Educacional</a>
             <a href="/quem-somos" className="text-light hover:text-secondary transition-colors">Quem Somos</a>
-            <a href="/" className="text-light hover:text-secondary transition-colors">Contato</a>
           </nav>
         </div>
       </div>

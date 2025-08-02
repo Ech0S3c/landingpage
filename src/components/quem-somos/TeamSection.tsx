@@ -4,6 +4,11 @@ import Image from 'next/image';
 const EducationalSection = () => {
   return (
     <section className="bg-black py-20">
+      {/* Background hexagon image */}
+      <div
+        className="absolute inset-0 bg-no-repeat bg-left"
+        style={{ backgroundImage: 'url("/hexagon-shade.svg")', backgroundPosition: 'left center', backgroundSize: '15%'}}
+      />
       <div className="container mx-auto px-30">
         <h2 className="text-2xl md:text-4xl font-bold text-white text-center mt-16 mb-2">Quem somos nós</h2>
         <p className="text-gray-400 text-center mb-8 md:mb-10 max-w-2xl mx-auto text-sm md:text-base">
