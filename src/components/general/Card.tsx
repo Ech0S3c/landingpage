@@ -1,5 +1,6 @@
 // components/general/Card.tsx
 import React from "react";
+import Image from "next/image";
 
 type CardProps = {
   title: string;
@@ -16,7 +17,7 @@ export default function Card({ title, text, icon }: CardProps) {
       {/* Content Container */}
       <div className="absolute inset-0 p-8 flex flex-col justify-start items-start gap-6 z-10">
         {icon && (
-          <img
+          <Image
             src={icon}
             alt="Ícone"
             className="w-10 h-10 text-light mt-2"

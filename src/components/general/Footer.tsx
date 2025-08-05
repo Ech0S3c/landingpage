@@ -21,7 +21,6 @@ const Footer = () => {
                 { label: 'Home', href: '/' },
                 { label: 'Educacional', href: '/materiais' },
                 { label: 'Quem Somos', href: '/quem-somos' },
-                { label: 'Contato', href: '/contato' },
               ].map(({ label, href }, index) => (
                 <li key={index}>
                   <a
@@ -43,12 +42,13 @@ const Footer = () => {
                 <span>contact@echosec.com</span>
               </div>
               <div className="flex items-center space-x-2">
-                <span>💬</span>
-                <span>@echosec_official</span>
+                <a href="https://www.instagram.com/echo.sec/">
+                  <span>💬</span>
+                  <span> @echo.sec</span></a>
               </div>
               <div className="flex items-center space-x-2">
                 <span>📱</span>
-                <span>+55 11 99999-9999</span>
+                <span>+55 27 99242-3488</span>
               </div>
             </div>
           </div>
