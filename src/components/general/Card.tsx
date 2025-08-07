@@ -20,6 +20,8 @@ export default function Card({ title, text, icon }: CardProps) {
           <Image
             src={icon}
             alt="Ícone"
+            width={10}
+            height={10}
             className="w-10 h-10 text-light mt-2"
           />
         )}
