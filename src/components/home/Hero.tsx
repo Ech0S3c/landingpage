@@ -89,7 +89,7 @@ const Hero = () => {
         setTerminalCommand(command.substring(0, charIndex));
         charIndex++;
       } else {
-        //@ts-ignore
+        //@ts-expect-error n sei pq mas sem essa porcaria fica vermelho e me incomoda
         clearInterval(typingInterval);
         typingInterval = null;
       }
@@ -124,17 +124,6 @@ const Hero = () => {
           }}
         />
       ))}
-
-      {/* Efeito de linha de código de fundo */}
-      <div className="absolute inset-0 opacity-5 md:opacity-10">
-        <div className="text-purple-400 text-xs font-mono leading-4 p-2 md:p-4">
-          {Array.from({ length: 30 }, (_, i) => (
-            <div key={i} className="mb-1">
-              {Math.random() > 0.5 ? '01010101' : '10101010'} {Math.random() > 0.5 ? '11110000' : '00001111'}
-            </div>
-          ))}
-        </div>
-      </div>
 
       <div className="container mx-auto px-4 md:px-6 text-center relative z-10 max-w-6xl">
         <div className="relative">
