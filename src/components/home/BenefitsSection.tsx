@@ -31,11 +31,11 @@ const BenefitsSection = () => {
   ];
 
   return (
-    <section className="bg-black py-20">
-      <div className="container mx-auto px-8 sm:px-12 lg:px-16">
-        <h2 className="text-4xl font-bold text-white text-center mb-16">Benefícios</h2>
+    <section className="bg-black py-16 md:py-24">
+      <div className="container mx-auto px-4 sm:px-6 md:px-8 lg:px-12 max-w-7xl">
+        <h2 className="text-3xl md:text-5xl lg:text-6xl font-bold text-white text-center mb-12 md:mb-20">Benefícios</h2>
         
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 mb-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 lg:gap-10 mb-8 md:mb-12">
           {benefits.slice(0, 3).map((benefit, index) => (
             <Card
               key={index}
@@ -46,7 +46,7 @@ const BenefitsSection = () => {
           ))}
         </div>
         
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 sm:gap-8 max-w-4xl mx-auto">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 lg:gap-10 max-w-5xl mx-auto">
           {benefits.slice(3).map((benefit, index) => (
             <Card
               key={index + 3}

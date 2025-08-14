@@ -24,16 +24,16 @@ const AboutSection = () => {
   ];
 
   return (
-    <section className="bg-primary py-20 font-body">
-      <div className="container mx-auto px-8 sm:px-12 lg:px-16">
-        <div className="text-center mb-16">
-          <h2 className="text-4xl font-bold text-light mb-4">Sobre a Liga</h2>
-          <p className="text-muted max-w-2xl mx-auto">
+    <section className="bg-black py-16 md:py-24 font-body">
+      <div className="container mx-auto px-4 sm:px-6 md:px-8 lg:px-12">
+        <div className="text-center mb-12 md:mb-20">
+          <h2 className="text-3xl md:text-5xl lg:text-6xl font-bold text-white mb-4 md:mb-6">Sobre a Liga</h2>
+          <p className="text-gray-400 max-w-3xl mx-auto text-base md:text-lg lg:text-xl leading-relaxed px-4 md:px-0">
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut ut enim eu dolor tempus cursus. Donec tincidunt faucibus lorem, et molestie tortor imperdiet in.
           </p>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 lg:gap-10 max-w-7xl mx-auto">
           {cards.map((card, index) => (
             <Card
               key={index}

@@ -42,13 +42,13 @@ const materials: MaterialCard[] = [
   },
   {
     id: 6,
-    title: "Aula",
+    title: "Em breve",
     href: "#forense-digital",
     imageSrc: "/Card-class.svg",
   },
 ]
 
-export default function MateriaisSection() {
+export default function MaterialsSection() {
   return (
     <section className="py-16 px-4 bg-black mt-14">
       <div className="max-w-7xl mx-auto">

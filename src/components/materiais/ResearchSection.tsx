@@ -39,37 +39,48 @@ const ResearchSection: React.FC = () => {
   ]
 
   return (
-    <section className="bg-black py-12 md:py-20 relative mt-0 p-0">
+    <section className="bg-black py-12 md:py-20 relative">
+      {/* Ajuste do padding horizontal para mobile */}
+      <div className="container mx-auto px-4 md:px-8">
+        <h2 className="text-3xl sm:text-4xl font-bold text-white text-center mb-8 md:mb-16">
+          Pesquisa & Inovação
+        </h2>
 
-      <div className="container mx-auto px-32 md:px-2 mt-0 p-0">
-        <h2 className="text-2xl md:text-4xl font-bold text-white text-center mb-8 md:mb-16"  style={{ fontSize: "45px"}}>Pesquisa & Inovação</h2>
-
-        {/* Container */}
-        <div className="max-w-7xl mx-auto border-[2px] rounded-lg p-8" style={{ backgroundColor: "#201E21", borderColor: "#7327FF" }}>
+        {/* Container dos cards */}
+        <div className="max-w-7xl mx-auto border-[2px] rounded-lg p-4 sm:p-8" style={{ backgroundColor: "#201E21", borderColor: "#7327FF" }}>
           <div className="space-y-0">
             {researches.map((research, index) => (
               <div key={research.id}>
                 <div className="py-8">
-                  {/* Layout principal */}
-                  <div className="grid grid-cols-1 lg:grid-cols-4 gap-8">
+                  {/* Grid que empilha no mobile */}
+                  <div className="grid grid-cols-1 lg:grid-cols-4 gap-6">
                     {/* Coluna esquerda */}
                     <div className="lg:col-span-3 space-y-6">
-                      {/* Header com título */}
                       <div>
-                        <h3 className="font-medium mb-2" style={{ fontSize: "22px", color: "#A372FF" }}>Título do Estudo</h3>
-                        <h4 className="text-white font-semibold text-xl" style={{ fontSize: "26px"}}>{research.title}</h4>
+                        <h3 className="font-medium mb-2 text-lg sm:text-xl" style={{ color: "#A372FF" }}>
+                          Título do Estudo
+                        </h3>
+                        <h4 className="text-white font-semibold text-xl sm:text-2xl">
+                          {research.title}
+                        </h4>
                       </div>
 
-                      {/* Autores */}
                       <div>
-                        <p className="font-medium mb-1" style={{ fontSize: "22px", color: "#A372FF" }}>Autores</p>
-                        <p className="text-white text-sm" style={{ fontSize: "26px"}}>{research.authors.join(", ")}</p>
+                        <p className="font-medium mb-1 text-lg sm:text-xl" style={{ color: "#A372FF" }}>
+                          Autores
+                        </p>
+                        <p className="text-white text-base sm:text-lg">
+                          {research.authors.join(", ")}
+                        </p>
                       </div>
 
-                      {/* Resumo */}
                       <div>
-                        <p className="font-medium mb-2" style={{ fontSize: "22px", color: "#A372FF" }}>Resumo</p>
-                        <p className="text-gray-300 text-sm leading-relaxed" style={{ fontSize: "18px"}}>{research.summary}</p>
+                        <p className="font-medium mb-2 text-lg sm:text-xl" style={{ color: "#A372FF" }}>
+                          Resumo
+                        </p>
+                        <p className="text-gray-300 text-sm sm:text-base leading-relaxed">
+                          {research.summary}
+                        </p>
                       </div>
 
                       {/* Tags */}
@@ -77,7 +88,12 @@ const ResearchSection: React.FC = () => {
                         {research.tags.map((tag, tagIndex) => (
                           <span
                             key={tagIndex}
-                            style={{ fontSize: "20px", color: "#B59AE5", border: "2px solid rgba(115, 39, 255, 0.5)", backgroundColor: "rgba(115, 39, 255, 0.5)" }}
+                            style={{
+                              fontSize: "16px",
+                              color: "#B59AE5",
+                              border: "2px solid rgba(115, 39, 255, 0.5)",
+                              backgroundColor: "rgba(115, 39, 255, 0.5)",
+                            }}
                             className="px-3 py-1 rounded-full font-medium"
                           >
                             {tag}
@@ -88,24 +104,30 @@ const ResearchSection: React.FC = () => {
 
                     {/* Coluna direita */}
                     <div className="space-y-6">
-                      {/* Ano */}
                       <div>
-                        <p className="font-medium mb-1" style={{ fontSize: "22px", color: "#A372FF" }}>Ano</p>
-                        <p className="text-white font-semibold text-lg" style={{ fontSize: "26px"}}>{research.year}</p>
+                        <p className="font-medium mb-1 text-lg sm:text-xl" style={{ color: "#A372FF" }}>
+                          Ano
+                        </p>
+                        <p className="text-white font-semibold text-lg sm:text-xl">
+                          {research.year}
+                        </p>
                       </div>
 
-                      {/* Impacto */}
                       <div>
-                        <p className="font-medium mb-2" style={{ fontSize: "22px", color: "#A372FF" }}>Impacto</p>
-                        <p className="text-gray-300 text-sm leading-relaxed" style={{ fontSize: "18px"}}>{research.impact}</p>
+                        <p className="font-medium mb-2 text-lg sm:text-xl" style={{ color: "#A372FF" }}>
+                          Impacto
+                        </p>
+                        <p className="text-gray-300 text-sm sm:text-base leading-relaxed">
+                          {research.impact}
+                        </p>
                       </div>
 
-                      {/* Link */}
                       <div>
-                        <p className="font-medium mb-1" style={{ fontSize: "22px", color: "#A372FF" }}>Link</p>
+                        <p className="font-medium mb-1 text-lg sm:text-xl" style={{ color: "#A372FF" }}>
+                          Link
+                        </p>
                         <Link
                           href={research.link}
-                          style={{ fontSize: "20px", color: "#A372FF" }}
                           className="text-purple-400 hover:text-purple-300 font-bold text-base transition-colors inline-flex items-center gap-1"
                         >
                           Visualizar
@@ -123,7 +145,7 @@ const ResearchSection: React.FC = () => {
                   </div>
                 </div>
 
-                {/* Linha separadora entre cards */}
+                {/* Linha separadora */}
                 {index < researches.length - 1 && <div className="border-t border-purple-500/50"></div>}
               </div>
             ))}

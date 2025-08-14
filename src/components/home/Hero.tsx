@@ -70,47 +70,53 @@ const Hero = () => {
 
   // Sistema de terminal simplificado
   useEffect(() => {
-    let currentCommandIndex = 0;
-    
-    const typeCommand = () => {
-      const command = terminalCommands[currentCommandIndex];
-      let charIndex = 0;
-      
-      // Limpar comando
-      setTerminalCommand('');
-      
-      // Digitar comando
-      const typingInterval = setInterval(() => {
-        if (charIndex <= command.length) {
-          setTerminalCommand(command.substring(0, charIndex));
-          charIndex++;
-        } else {
-          clearInterval(typingInterval);
-        }
-      }, Math.max(2000 / command.length, 30));
-    };
-    
-    // Primeiro comando
-    setTimeout(typeCommand, 1000);
-    
-    // Comandos subsequentes
-    const commandTimer = setInterval(() => {
-      currentCommandIndex = (currentCommandIndex + 1) % terminalCommands.length;
-      typeCommand();
-    }, 2500);
+  let currentCommandIndex = 0;
+  let typingInterval: NodeJS.Timeout | null = null;
+  let commandTimer = null;
 
-    return () => {
-      clearInterval(commandTimer);
-    };
-  }, );
+  const typeCommand = () => {
+    const command = terminalCommands[currentCommandIndex];
+    let charIndex = 0;
+    
+    setTerminalCommand('');
+    
+    if (typingInterval) {
+      clearInterval(typingInterval);
+    }
+    
+    typingInterval = setInterval(() => {
+      if (charIndex <= command.length) {
+        setTerminalCommand(command.substring(0, charIndex));
+        charIndex++;
+      } else {
+        //@ts-expect-error n sei pq mas sem essa porcaria fica vermelho e me incomoda
+        clearInterval(typingInterval);
+        typingInterval = null;
+      }
+    }, Math.max(2000 / command.length, 30));
+  };
+
+  const firstCommandTimer = setTimeout(typeCommand, 1000);
+
+  commandTimer = setInterval(() => {
+    currentCommandIndex = (currentCommandIndex + 1) % terminalCommands.length;
+    typeCommand();
+  }, 4000);
+
+  return () => {
+    if (typingInterval) clearInterval(typingInterval);
+    if (commandTimer) clearInterval(commandTimer);
+    if (firstCommandTimer) clearTimeout(firstCommandTimer);
+  };
+}, []);
 
   return (
-    <section className="bg-black min-h-screen flex items-center justify-center pt-10 relative overflow-hidden">
+    <section className="bg-black min-h-screen flex items-center justify-center pt-16 md:pt-10 relative overflow-hidden">
       {/* Partículas de fundo */}
       {particles.map(particle => (
         <div
           key={particle.id}
-          className="absolute w-1 h-1 bg-purple-600 rounded-full animate-pulse"
+          className="absolute w-1 h-1 bg-purple-600 rounded-full animate-pulse hidden md:block"
           style={{
             left: particle.x,
             top: particle.y,
@@ -119,22 +125,11 @@ const Hero = () => {
         />
       ))}
 
-      {/* Efeito de linha de código de fundo */}
-      <div className="absolute inset-0 opacity-10">
-        <div className="text-purple-400 text-xs font-mono leading-4 p-4">
-          {Array.from({ length: 50 }, (_, i) => (
-            <div key={i} className="mb-1">
-              {Math.random() > 0.5 ? '01010101' : '10101010'} {Math.random() > 0.5 ? '11110000' : '00001111'}
-            </div>
-          ))}
-        </div>
-      </div>
-
-      <div className="container mx-auto px-6 text-center relative z-10">
+      <div className="container mx-auto px-4 md:px-6 text-center relative z-10 max-w-6xl">
         <div className="relative">
           {/* Título principal com TypeAnimation */}
           <h1 
-            className={`text-5xl md:text-6xl font-bold text-white mb-4 transition-all duration-100 min-h-[4rem] flex items-center justify-center ${
+            className={`text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-white mb-8 md:mb-12 transition-all duration-100 min-h-[4rem] md:min-h-[5rem] flex flex-col items-center justify-center leading-tight ${
               glitch ? 'transform translate-x-1 text-purple-400' : ''
             }`}
             style={{
@@ -143,7 +138,7 @@ const Hero = () => {
                 : '0 0 20px rgba(124, 58, 237, 0.5)'
             }}
           > 
-            <span className="mr-4">Welcome to </span>
+            <span className="mb-2">Welcome to </span>
             <TypeAnimation
               sequence={titleSequence}
               wrapper="span"
@@ -164,13 +159,13 @@ const Hero = () => {
           />
         </div>
         
-        <div className="text-lg md:text-xl font-mono mt-8 max-w-4xl mx-auto text-left">
+        <div className="text-sm md:text-base lg:text-lg font-mono mt-8 md:mt-12 max-w-full md:max-w-5xl mx-auto text-left">
           {/* Terminal com glassmorphism */}
           <div 
-            className="relative p-6 rounded-2xl backdrop-blur-xl border border-white/10 shadow-2xl"
+            className="relative p-4 md:p-6 lg:p-8 rounded-xl md:rounded-2xl backdrop-blur-xl border border-white/20 shadow-2xl mx-4 md:mx-0"
             style={{
-              background: 'linear-gradient(135deg, rgba(124, 58, 237, 0.1) 0%, rgba(139, 69, 19, 0.05) 50%, rgba(0, 0, 0, 0.3) 100%)',
-              boxShadow: '0 20px 40px rgba(124, 58, 237, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.1)'
+              background: 'linear-gradient(135deg, rgba(124, 58, 237, 0.15) 0%, rgba(139, 69, 19, 0.08) 50%, rgba(0, 0, 0, 0.4) 100%)',
+              boxShadow: '0 25px 50px rgba(124, 58, 237, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.15)'
             }}
           >
             {/* Efeito de brilho sutil no topo */}
@@ -182,17 +177,17 @@ const Hero = () => {
             />
             
             {/* Header do terminal */}
-            <div className="flex items-center mb-4">
-              <div className="flex space-x-2 mr-4">
-                <div className="w-3 h-3 bg-red-500/80 rounded-full backdrop-blur-sm shadow-lg"></div>
-                <div className="w-3 h-3 bg-yellow-500/80 rounded-full backdrop-blur-sm shadow-lg"></div>
-                <div className="w-3 h-3 bg-green-500/80 rounded-full backdrop-blur-sm shadow-lg"></div>
+            <div className="flex items-center mb-3 md:mb-4">
+              <div className="flex space-x-1 md:space-x-2 mr-2 md:mr-4">
+                <div className="w-2 h-2 md:w-3 md:h-3 bg-red-500/80 rounded-full backdrop-blur-sm shadow-lg"></div>
+                <div className="w-2 h-2 md:w-3 md:h-3 bg-yellow-500/80 rounded-full backdrop-blur-sm shadow-lg"></div>
+                <div className="w-2 h-2 md:w-3 md:h-3 bg-green-500/80 rounded-full backdrop-blur-sm shadow-lg"></div>
               </div>
-              <span className="text-gray-400/80 text-sm font-medium">Terminal - zsh</span>
+              <span className="text-gray-400/80 text-xs md:text-sm font-medium">Terminal - zsh</span>
             </div>
             
             {/* Linha do prompt */}
-            <div className="text-sm mb-1 opacity-90">
+            <div className="text-xs md:text-sm mb-1 opacity-90 overflow-hidden">
               <span className="text-green-400/90">┌──(</span>
               <span className="text-blue-400/90 font-semibold">kali㉿echosec</span>
               <span className="text-green-400/90">)-[</span>
@@ -201,11 +196,11 @@ const Hero = () => {
             </div>
             
             {/* Linha do comando */}
-            <div className="text-sm flex items-center">
-              <span className="text-green-400/90 mr-1">└─$ </span>
-              <span className="text-white/95 font-mono tracking-wide">{terminalCommand}</span>
+            <div className="text-xs md:text-sm flex items-start md:items-center overflow-hidden">
+              <span className="text-green-400/90 mr-1 flex-shrink-0">└─$ </span>
+              <span className="text-white/95 font-mono tracking-wide break-all md:break-normal">{terminalCommand}</span>
               <span 
-                className="animate-pulse text-green-400/90 ml-1 font-bold"
+                className="animate-pulse text-green-400/90 ml-1 font-bold flex-shrink-0"
                 style={{
                   textShadow: '0 0 8px rgba(74, 222, 128, 0.5)'
                 }}
@@ -214,7 +209,7 @@ const Hero = () => {
             
             {/* Efeito de scan line sutil no terminal */}
             <div 
-              className="absolute inset-0 pointer-events-none rounded-2xl opacity-20"
+              className="absolute inset-0 pointer-events-none rounded-xl md:rounded-2xl opacity-20 hidden md:block"
               style={{
                 background: 'linear-gradient(0deg, transparent 48%, rgba(124, 58, 237, 0.1) 49%, rgba(124, 58, 237, 0.2) 50%, rgba(124, 58, 237, 0.1) 51%, transparent 52%)',
                 animation: 'terminalScan 4s infinite ease-in-out'
