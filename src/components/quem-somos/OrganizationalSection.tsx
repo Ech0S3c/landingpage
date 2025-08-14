@@ -125,14 +125,14 @@ const OrganizationalSection = () => {
                           backgroundPosition: 'center'
                         }}                      
                       >
-                      <div className="pt-16 sm:pt-18 md:pt-20 lg:pt-24 pb-6 md:pb-8 px-3 sm:px-4 md:px-6 text-center h-full flex flex-col justify-between">
-                        <div>
-                          <Image
+                      <div className="pt-18 sm:pt-16 md:pt-24 lg:pt-20 pb-6 md:pb-8 px-3 sm:px-4 md:px-6 text-center h-full flex flex-col justify-between">
+                        <div className="pb-8 sm:pb-8 px-16 sm:px-6 text-center h-full flex flex-col justify-between">
+                          <Image 
                             src={organizational.image}
-                            alt="Organizational"
-                            width={150}
-                            height={150}
-                            className="w-20 h-20 sm:w-24 sm:h-24 md:w-28 md:h-28 lg:w-32 lg:h-32 xl:w-36 xl:h-36 rounded-full border-4 border-purple-400 mx-auto mb-3 sm:mb-4 hover:scale-[1.02] transition-transform duration-300 ease-in-out shadow-xl object-cover"
+                            alt={organizational.text}
+                            width={180}
+                            height={180}
+                            className="sm:w-40 sm:h-40 rounded-full border-4 border-purple-400 mx-auto mb-4 mt-2 shadow-xl object-cover"
                           />
                         </div>
                         <p className="text-lg font-bold text-white ">{organizational.team}</p>
