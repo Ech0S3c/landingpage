@@ -1,6 +1,38 @@
+'use client'
 import React from 'react';
+import { useState } from 'react';
 
 const ContactSection = () => {
+  const [form, setForm] = useState({ name: '', email: '', message: '' });
+  const [status, setStatus] = useState('');
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    setForm({ ...form, [e.target.name]: e.target.value });
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setStatus('Enviando...');
+
+    try {
+      const res = await fetch('/api/send-email', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(form),
+      });
+
+      if (res.ok) {
+        setStatus('Mensagem enviada com sucesso!');
+        setForm({ name: '', email: '', message: '' });
+      } else {
+        setStatus('Erro ao enviar. Tente novamente.');
+      }
+    } catch (error) {
+      console.error('Erro ao enviar:', error);
+      setStatus('Erro ao enviar. Verifique sua conexão.');
+    }
+  };
+
   return (
     <section className="py-20">
       <div className="container mx-auto px-6">
@@ -29,36 +61,41 @@ const ContactSection = () => {
             </div>
             
             {/* Right side - Form */}
-            <div>
-              <form className="space-y-6">
-                <input
-                  type="text"
-                  placeholder="Insira seu nome"
-                  className="w-full bg-gray-600/60 border-0 rounded-lg px-6 py-4 text-white placeholder-gray-300 focus:bg-gray-600/80 focus:outline-none transition-all"
-                />
-                <input
-                  type="email"
-                  placeholder="Insira seu e-mail"
-                  className="w-full bg-gray-600/60 border-0 rounded-lg px-6 py-4 text-white placeholder-gray-300 focus:bg-gray-600/80 focus:outline-none transition-all"
-                />
-                <textarea
-                  placeholder="Insira uma mensagem que você quer enviar à Liga"
-                  rows={5}
-                  className="w-full bg-gray-600/60 border-0 rounded-lg px-6 py-4 text-white placeholder-gray-300 focus:bg-gray-600/80 focus:outline-none resize-none transition-all"
-                ></textarea>
-                <div className="flex justify-end pt-2">
-                  <button
-                    type="submit"
-                    className="bg-purple-600 hover:bg-purple-700 text-white px-10 py-4 rounded-lg font-semibold transition-colors flex items-center gap-3 text-lg"
-                  >
-                    <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8" />
-                    </svg>
-                    Enviar
-                  </button>
-                </div>
-              </form>
-            </div>
+             <form onSubmit={handleSubmit} className="flex-1 flex flex-col gap-4">
+              <input
+                type="text"
+                name="name"
+                placeholder="Insira seu nome"
+                value={form.name}
+                onChange={handleChange}
+                required
+                className="bg-gray-800 p-3 rounded"
+              />
+              <input
+                type="email"
+                name="email"
+                placeholder="Insira seu e-mail"
+                value={form.email}
+                onChange={handleChange}
+                required
+                className="bg-gray-800 p-3 rounded"
+              />
+              <textarea
+                name="message"
+                placeholder="Insira uma mensagem que você quer enviar à Liga"
+                value={form.message}
+                onChange={handleChange}
+                required
+                className="bg-gray-800 p-3 rounded h-40"
+              />
+              <button
+                type="submit"
+                className="bg-purple-600 hover:bg-purple-600/80 text-white px-6 md:px-8 py-2 md:py-3 rounded-lg font-semibold transition-"
+              >
+              Enviar
+              </button>
+              {status && <p className="text-sm text-center mt-2">{status}</p>}
+            </form>
           </div>
         </div>
       </div>

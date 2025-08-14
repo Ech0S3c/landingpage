@@ -31,7 +31,7 @@ const EducationalSection = () => {
             <p className="text-gray-400 mb-6 leading-relaxed">
               Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut ut enim eu dolor tempus cursus. Donec tincidunt faucibus lorem, et molestie tortor imperdiet in. Ut risus lorem, scelerisque sit amet elementum ac.
             </p>
-            <button className="bg-purple-600 hover:bg-purple-700 text-white px-6 py-3 font-bold transition-colors">
+            <button className="bg-purple-600 hover:bg-purple-600/80 text-white px-6 md:px-8 py-2 md:py-3 rounded-lg font-semibold transition-">
               Veja Nossos Materiais
             </button>
           </div>
