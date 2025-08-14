@@ -70,39 +70,45 @@ const Hero = () => {
 
   // Sistema de terminal simplificado
   useEffect(() => {
-    let currentCommandIndex = 0;
-    
-    const typeCommand = () => {
-      const command = terminalCommands[currentCommandIndex];
-      let charIndex = 0;
-      
-      // Limpar comando
-      setTerminalCommand('');
-      
-      // Digitar comando
-      const typingInterval = setInterval(() => {
-        if (charIndex <= command.length) {
-          setTerminalCommand(command.substring(0, charIndex));
-          charIndex++;
-        } else {
-          clearInterval(typingInterval);
-        }
-      }, Math.max(2000 / command.length, 30));
-    };
-    
-    // Primeiro comando
-    setTimeout(typeCommand, 1000);
-    
-    // Comandos subsequentes
-    const commandTimer = setInterval(() => {
-      currentCommandIndex = (currentCommandIndex + 1) % terminalCommands.length;
-      typeCommand();
-    }, 2500);
+  let currentCommandIndex = 0;
+  let typingInterval: NodeJS.Timeout | null = null;
+  let commandTimer = null;
 
-    return () => {
-      clearInterval(commandTimer);
-    };
-  }, );
+  const typeCommand = () => {
+    const command = terminalCommands[currentCommandIndex];
+    let charIndex = 0;
+    
+    setTerminalCommand('');
+    
+    if (typingInterval) {
+      clearInterval(typingInterval);
+    }
+    
+    typingInterval = setInterval(() => {
+      if (charIndex <= command.length) {
+        setTerminalCommand(command.substring(0, charIndex));
+        charIndex++;
+      } else {
+        //@ts-ignore
+        clearInterval(typingInterval);
+        typingInterval = null;
+      }
+    }, Math.max(2000 / command.length, 30));
+  };
+
+  const firstCommandTimer = setTimeout(typeCommand, 1000);
+
+  commandTimer = setInterval(() => {
+    currentCommandIndex = (currentCommandIndex + 1) % terminalCommands.length;
+    typeCommand();
+  }, 4000);
+
+  return () => {
+    if (typingInterval) clearInterval(typingInterval);
+    if (commandTimer) clearInterval(commandTimer);
+    if (firstCommandTimer) clearTimeout(firstCommandTimer);
+  };
+}, []);
 
   return (
     <section className="bg-black min-h-screen flex items-center justify-center pt-16 md:pt-10 relative overflow-hidden">
