@@ -106,6 +106,8 @@ const TestimonialsSection = () => {
                           <Image 
                             src={testimonial.image}
                             alt={testimonial.text}
+                            width='24'
+                            height='24'
                             className="w-24 h-24 sm:w-39 sm:h-39 rounded-full border-4 border-purple-400 mx-auto mb-4 mt-2 hover:scale-105 transition-transform duration-300 ease-in-out shadow-xl"
                           />
                         </div>
