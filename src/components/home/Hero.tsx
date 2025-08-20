@@ -1,5 +1,5 @@
 "use client";
-// Hero.tsx
+// Hero.tsx teste
 
 import React, { useState, useEffect } from 'react';
 import { TypeAnimation } from 'react-type-animation';
