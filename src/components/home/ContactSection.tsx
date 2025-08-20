@@ -34,27 +34,24 @@ const ContactSection = () => {
   };
 
   return (
-    <section className="py-20">
-      <div className="container mx-auto px-6">
-        <div 
-          className="max-w-6xl mx-auto p-8 md:p-12 lg:p-16 relative overflow-hidden"
+    <section className="py-16 md:py-24">
+      <div className="container mx-auto px-4 md:px-6 lg:px-8">
+        <div
+          className="max-w-7xl mx-auto p-8 md:p-12 lg:p-16 xl:p-20 relative overflow-hidden rounded-2xl md:rounded-3xl"
           style={{
             backgroundImage: `url('/forms.svg')`,
-            backgroundSize: '100% 100%',
+            backgroundSize: '115% 115%',
             backgroundRepeat: 'no-repeat',
             backgroundPosition: 'center'
           }}
         >
-          {/* Overlay for better text readability */}
-          <div className="absolute inset-0"></div>
+          <div className="absolute inset-0 bg-black/20 rounded-2xl md:rounded-3xl"></div>
           
-          
-          <div className="relative z-10 grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
-            {/* Left side - Title */}
-            <div>
-              <h2 className="text-white text-3xl md:text-4xl lg:text-5xl font-bold leading-tight">
+          <div className="relative z-10 grid grid-cols-1 lg:grid-cols-2 gap-10 md:gap-12 lg:gap-16 items-center">
+            <div className="text-center lg:text-left">
+              <h2 className="text-white text-2xl md:text-4xl lg:text-5xl xl:text-6xl font-bold leading-tight mb-4 md:mb-0">
                 Tem algum <span className="text-purple-400">feedback</span>,{' '}
-                <span className="text-purple-400">dúvida</span>, ou 
+                <span className="text-purple-400">dúvida</span>, ou
                 simplesmente quer <span className="text-purple-400">entrar</span>{' '}
                 <span className="text-purple-400">em contato</span>?
               </h2>

@@ -30,25 +30,25 @@ const materials: MaterialCard[] = [
   },
   {
     id: 4,
-    title: "Aula",
-    href: "#analise-vulnerabilidades",
+    title: "Redes de Computadores",
+    href: "https://ech0s3c.github.io/material/Redes/",
     imageSrc: "/Card-class.svg",
   },
   {
     id: 5,
-    title: "Aula",
-    href: "#ethical-hacking",
+    title: "Sistema Operacionais",
+    href: "https://ech0s3c.github.io/material/Sistemas-Operacionais/",
     imageSrc: "/Card-class.svg",
   },
   {
     id: 6,
-    title: "Aula",
+    title: "Em breve",
     href: "#forense-digital",
     imageSrc: "/Card-class.svg",
   },
 ]
 
-export default function MateriaisSection() {
+export default function MaterialsSection() {
   return (
     <section className="py-16 px-4 bg-black mt-14">
       <div className="max-w-7xl mx-auto">
@@ -61,6 +61,7 @@ export default function MateriaisSection() {
             <Link
               key={material.id}
               href={material.href}
+              target="_blank"
               className="group block transform transition-all duration-300 hover:scale-105 hover:shadow-2xl"
             >
               <div className="relative w-full h-75">
