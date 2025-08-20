@@ -31,11 +31,9 @@ const EducationalSection = () => {
             <p className="text-gray-400 mb-6 md:mb-8 leading-relaxed text-base md:text-lg">
               Oferecemos workshops práticos, competições de CTF, palestras com especialistas da indústria e projetos hands-on que simulam cenários reais de segurança cibernética. Cada evento é uma oportunidade de crescimento.
             </p>
-            <div className="text-center lg:text-left">
-              <button className="bg-purple-600 hover:bg-purple-700 text-white px-6 md:px-8 py-3 md:py-4 font-bold transition-all duration-300 rounded-lg text-base md:text-lg hover:scale-105">
-                Veja Nossos Materiais
-              </button>
-            </div>
+            <button className="bg-purple-600 hover:bg-purple-600/80 text-white px-6 md:px-8 py-2 md:py-3 rounded-lg font-semibold transition-">
+              Veja Nossos Materiais
+            </button>
           </div>
           <div className="order-1 lg:order-2 bg-gradient-to-r from-purple-600 to-purple-500 p-1 rounded-2xl">
             <Image
