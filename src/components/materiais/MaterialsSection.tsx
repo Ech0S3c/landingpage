@@ -55,23 +55,22 @@ export default function MaterialsSection() {
         {/* Título da seção */}
         <h2 className="text-4xl font-bold text-white text-center mb-10" style={{ fontSize: "45px"}}>Materiais</h2>
 
-        {/* Grid de cards */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-15">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-6 md:gap-8 auto-rows-max place-items-center">
           {materials.map((material) => (
             <Link
               key={material.id}
               href={material.href}
               target="_blank"
-              className="group block transform transition-all duration-300 hover:scale-105 hover:shadow-2xl"
+              className="group block transform transition-all duration-300 hover:scale-105 hover:shadow-2xl w-full max-w-sm"
             >
-              <div className="relative w-full h-75">
+              <div className="relative w-full aspect-square">
                 {/* Imagem de fundo */}
                 <Image
                   src={material.imageSrc}
-                  alt=""
+                  alt={material.title}
                   fill
                   className="object-contain"
-                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                  sizes="(max-width: 640px) 100vw, (max-width: 768px) 50vw, (max-width: 1280px) 33vw, 25vw"
                 />
               </div>
             </Link>
