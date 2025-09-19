@@ -230,6 +230,7 @@ const Particle: React.FC<{ particle: Particle }> = React.memo(({ particle }) => 
     }}
   />
 ));
+Particle.displayName = 'Particle';
 
 /**
  * Renders the terminal window header (colored dots and label).
@@ -244,6 +245,7 @@ const TerminalHeader: React.FC = React.memo(() => (
     <span className="text-gray-400/80 text-xs md:text-sm font-medium">Terminal - zsh</span>
   </div>
 ));
+TerminalHeader.displayName = 'TerminalHeader';
 
 /**
  * Renders the terminal prompt line.
@@ -257,6 +259,7 @@ const TerminalPrompt: React.FC = React.memo(() => (
     <span className="text-green-400/90">]</span>
   </div>
 ));
+TerminalPrompt.displayName = 'TerminalPrompt';
 
 /**
  * Renders the command line with animated typing and blinking cursor.
@@ -273,6 +276,7 @@ const TerminalCommandLine: React.FC<{ command: string }> = React.memo(({ command
     >█</span>
   </div>
 ));
+TerminalCommandLine.displayName = 'TerminalCommandLine';
 
 /**
  * Renders the full terminal window with header, prompt, and command line.
@@ -305,6 +309,7 @@ const Terminal: React.FC<{ command: string }> = React.memo(({ command }) => (
     />
   </div>
 ));
+Terminal.displayName = 'Terminal';
 
 /**
  * Renders the animated title with glitch effect and scan line.
@@ -353,6 +358,7 @@ const AnimatedTitle: React.FC<{ glitch: boolean }> = React.memo(({ glitch }) => 
     </div>
   );
 });
+AnimatedTitle.displayName = 'AnimatedTitle';
 
 /**
  * Injects custom keyframe animations for scan effects.
@@ -370,6 +376,7 @@ const AnimationStyles: React.FC = React.memo(() => (
     }
   `}</style>
 ));
+AnimationStyles.displayName = 'AnimationStyles';
 
 // =======================
 // Main Hero Component

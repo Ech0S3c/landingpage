@@ -14,7 +14,7 @@ const Footer = () => {
               <Image src="/logo.svg" alt="Logo" width={32} height={32} className="w-7 h-7 md:w-8 md:h-8" />
               <span className="text-white font-semibold text-lg md:text-xl">EchoSec</span>
             </Link>
-            <p className="text-purple-400 font-mono text-sm mb-4">//Welcome to EchoSec.</p>
+            <p className="text-purple-400 font-mono text-sm mb-4">{`//Welcome to EchoSec.`}</p>
             
             {/* Email com ícone SVG */}
             <div className="flex items-center space-x-2">
