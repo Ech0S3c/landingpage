@@ -9,7 +9,7 @@ const TestimonialsSection = () => {
   const [slidesPerView, setSlidesPerView] = useState(3);
 
   const testimonials = [
-    { image: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=150&h=150&fit=crop&crop=face", text: "Com o apoio da Echosec, fui selecionado para o programa de talentos da IBM." },
+    { image: "/rafael_santos.png", text: "Com o apoio da Echosec, fui selecionado para o programa de talentos da IBM." },
     { image: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=150&h=150&fit=crop&crop=face", text: "Depois de treinar com a Echosec, consegui minha primeira vaga como pentester júnior." },
     { image: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=150&h=150&fit=crop&crop=face", text: "Com as aulas e material de Echosec, consegui participar da DEFCON CTF e chegar à final." },
     { image: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=150&h=150&fit=crop&crop=face", text: "A Echosec me deu as ferramentas para conseguir minha primeira certificação em cybersec." },
