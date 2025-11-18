@@ -6,27 +6,27 @@ const BenefitsSection = () => {
     {
       icon: "/D3.svg",
       title: "Comunidade",
-      description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut ut enim eu dolor tempus cursus. Donec tincidunt faucibus lorem, et molestie tortor imperdiet in."
+      description: "Conecte-se a estudantes e profissionais, troque experiências e cresça junto. Eventos, grupos de estudo e suporte constante."
     },
     {
       icon: "/G4.svg",
       title: "Aprendizado",
-      description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut ut enim eu dolor tempus cursus. Donec tincidunt faucibus lorem, et molestie tortor imperdiet in."
+      description: "Oficinas, trilhas e CTFs para aprender na prática. Conteúdo atualizado e mentoria para acelerar sua evolução."
     },
     {
       icon: "/C1.svg",
       title: "Networking",
-      description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut ut enim eu dolor tempus cursus. Donec tincidunt faucibus lorem, et molestie tortor imperdiet in."
+      description: "Aproximação com empresas e comunidades do setor. Participe de meetups e tenha acesso a oportunidades e referências."
     },
     {
       icon: "/H4.svg",
       title: "Preparação de Carreira",
-      description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut ut enim eu dolor tempus cursus. Donec tincidunt faucibus lorem, et molestie tortor imperdiet in."
+      description: "Orientação de portfólio, entrevistas e certificações. Desafios e feedback para conquistar estágios e vagas."
     },
     {
       icon: "/F4.svg",
       title: "Projetos Práticos",
-      description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut ut enim eu dolor tempus cursus. Donec tincidunt faucibus lorem, et molestie tortor imperdiet in."
+      description: "Desenvolva projetos reais e open source, da ideia ao deploy. Trabalhe em equipe e construa um portfólio sólido."
     }
   ];
 

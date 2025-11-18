@@ -89,7 +89,7 @@ const OrganizationalSection = () => {
       <div className="container mx-auto px-4 md:px-6">
         <h2 className="text-2xl md:text-4xl font-bold text-white text-center mb-4">Estrutura organizacional</h2>
         <p className="text-gray-400 text-center mb-8 md:mb-10 max-w-2xl mx-auto text-sm md:text-base">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut ut enim eu dolor tempus cursus. Donec tincidunt faucibus lorem, et molestie tortor imperdiet in.
+          Operamos em frentes com autonomia: Acadêmica (trilhas e mentoria), Competitiva (CTFs e times Red/Blue), Projetos & Labs (pesquisa aplicada e automações), Parcerias & Eventos (empresas e comunidade), Comunicação & Comunidade (conteúdo e onboarding) e Operações & Infra (processos, GRC e suporte). Essa estrutura garante foco, qualidade e continuidade.
         </p>
         
         <div className="relative max-w-7xl mx-auto px-2 md:px-4">

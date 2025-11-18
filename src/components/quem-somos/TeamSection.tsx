@@ -13,8 +13,7 @@ const EducationalSection = () => {
           Quem somos nós
         </h2>
         <p className="text-gray-400 text-center mb-8 md:mb-10 max-w-2xl mx-auto text-sm md:text-base">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut ut enim eu dolor tempus cursus. 
-          Donec tincidunt faucibus lorem, et molestie tortor imperdiet in.
+          Somos a Echosec, Liga Acadêmica de Cibersegurança. Unimos estudantes que querem aprender e praticar segurança digital em um ambiente ético, inclusivo e colaborativo. Promovemos trilhas de estudo, CTFs, projetos e conexões com o mercado para transformar curiosidade em carreira.
         </p>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 items-center">
           <div className="flex justify-center items-center max-w-full mx-auto">
@@ -29,10 +28,7 @@ const EducationalSection = () => {
           <div>
             <h3 className="text-2xl md:text-3xl font-bold text-white mb-4">Nosso Time</h3>
             <p className="text-gray-400 mb-6 leading-relaxed text-sm md:text-base">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
-              Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. 
-              Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. 
-              Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+              Multidisciplinar e mão na massa: pessoas de tecnologia e áreas afins, apoiadas por mentores. Trabalhamos com liderança compartilhada, aprendizado contínuo e cultura de colaboração, aqui todo mundo ensina e aprende.
             </p>
           </div>
         </div>

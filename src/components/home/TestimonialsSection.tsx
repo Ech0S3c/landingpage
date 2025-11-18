@@ -42,7 +42,7 @@ const TestimonialsSection = () => {
       <div className="container mx-auto px-4 sm:px-6">
         <h2 className="text-2xl sm:text-4xl font-bold text-white text-center mb-4">Histórias da Liga</h2>
         <p className="text-gray-400 text-center mb-10 max-w-2xl mx-auto text-sm sm:text-base">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut ut enim eu dolor tempus cursus.
+          Conheça histórias reais de quem passou pela Liga e transformou aprendizado em conquistas.
         </p>
 
         <div className="relative max-w-7xl mx-auto">
